@@ -18,7 +18,9 @@ const data = {
             name: "Jill",
             score: 0
         }
-    ]
+    ],
+    card1: undefined,
+    card2: undefined
 }
 
 const gameField = document.getElementById("game-field");
@@ -43,10 +45,30 @@ function init() {
 
 }
 function onTurnCard(event) {
-    if (event.target.className === "cover") {
-        console.log("card clicked");
+    if (event.target.className === "cover" && !data.card1) {
+        console.log("card 1 clicked");
         event.target.className = "";
+        data.card1 = event.target.parentNode;
+    } else if (event.target.className === "cover" && data.card1) {
+        console.log("card 2 clicked");
+        event.target.className = "";
+        data.card2 = event.target.parentNode;
+        if (data.card1.dataset.card === data.card2.dataset.card) {
+            currentPlayer.score++;
+            data.card1.style.visibility = "hidden";
+            data.card2.style.visibility = "hidden";
+        } else {
+            console.log("else called")
+            data.card1.children[1].className = "cover";
+            data.card2.children[1].className = "cover";
+        }
+        data.card1 = undefined;
+        data.card2 = undefined;
+        currentPlayer = currentPlayer === data.players[0]? data.players[1] : data.players[0]
     }
+
+
+
 
 }
 
