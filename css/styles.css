@@ -67,10 +67,20 @@ main {
     text-align: center;    
     background-color:darkcyan;
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
     font-size: 24px;
     text-transform: uppercase;
 }
 #timer p {
     background-color: chocolate;
+}
+#chat-box {
+    margin: 10px;
+    background-color: chocolate;
+    padding: 25px;
+    padding-left: 50px;
+    border-radius: 10px;
+}
+#chat-box p {
+    font-size: 32px;
 }
