@@ -141,7 +141,8 @@ function updateClock(time) {
 
 function updateUI(time) {
     seconds = time.sec < 10 ? seconds = `0${time.sec}` : time.sec
-    timerText.innerHTML = `${time.min} : ${seconds}`;
+    timerText.innerHTML = `<p>${time.min} : ${seconds}</p>`;
+    
     txtPlayer1.innerHTML = `<p>${data.players[0].name} : ${data.players[0].score}</p>`;
     txtPlayer2.innerHTML = `<p>${data.players[1].name} : ${data.players[1].score}</p>`;
 }
