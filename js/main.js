@@ -37,7 +37,8 @@ function init() {
     data.cardsLeft = data.images.length;
     data.time.sec = 0;
     data.time.min = 0;
-    let cardset = shuffle(data.images.concat(data.images))
+    let cardset = shuffle(data.images.concat(data.images));
+    gameField.innerHTML = "";
     cardset.forEach(image => {
         let newCard = document.createElement("div");
         let newImage = document.createElement("img");
