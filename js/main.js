@@ -11,11 +11,11 @@ const data = {
     ],
     players: [
         {
-            name: "Jack",
+            name: "",
             score: 0
         },
         {
-            name: "Jill",
+            name: "",
             score: 0
         }
     ],
@@ -29,14 +29,23 @@ const data = {
 }
 
 const gameField = document.getElementById("game-field");
+const txtPlayer1 = document.getElementById("player1");
+const txtPlayer2 = document.getElementById("player2");
+const timerText = document.getElementById("timer");
 let currentPlayer = Math.random() < 0.5 ? data.players[0] : data.players[1];
 let timer = undefined;
 let pause = false;
+if (!data.players[0].name) { data.players[0].name = prompt("Naam van speler 1") };
+if (!data.players[1].name) { data.players[1].name = prompt("Naam van speler 2") };
 
 function init() {
+
+    updateUI(data.time);
     data.cardsLeft = data.images.length;
     data.time.sec = 0;
     data.time.min = 0;
+    data.card1 = undefined;
+    data.card2 = undefined;
     let cardset = shuffle(data.images.concat(data.images));
     gameField.innerHTML = "";
     cardset.forEach(image => {
@@ -49,9 +58,6 @@ function init() {
         newCard.appendChild(newImage);
         newCard.appendChild(cover);
         gameField.appendChild(newCard);
-
-
-
     })
     timer = setInterval(() => {
         console.log("tick");
@@ -71,29 +77,27 @@ function onTurnCard(event) {
         pause = true;
         setTimeout(() => checkMatch(), 2000);
     }
+    updateUI(data.time);
 }
 
 function checkMatch() {
-    if (data.card1.dataset.card === data.card2.dataset.card) {
+    if (data.card1.dataset.card === data.card2.dataset.card) {  // de kaartjes matchen
         currentPlayer.score++;
         data.cardsLeft--;
         data.card1.style.visibility = "hidden";
         data.card2.style.visibility = "hidden";
     } else {
-        console.log("else called")
+        // console.log("else called")
         data.card1.children[1].className = "cover";
         data.card2.children[1].className = "cover";
+        currentPlayer = currentPlayer === data.players[0] ? data.players[1] : data.players[0];
+        console.log("current player : " + currentPlayer.name);
     }
-    data.card1 = undefined;
-    data.card2 = undefined;
-    currentPlayer = currentPlayer === data.players[0] ? data.players[1] : data.players[0]
-
     if (data.cardsLeft === 0) {
         restart()
     } else {
         data.card1 = undefined;
         data.card2 = undefined;
-        currentPlayer = currentPlayer === data.players[0] ? data.players[1] : data.players[0]
         pause = false;
     }
 }
@@ -101,7 +105,9 @@ function checkMatch() {
 function restart() {
     console.log("restart!")
     clearInterval(timer);
-    init();
+    if (confirm("Nog een spel?")) {
+        init();
+    };
 }
 
 function shuffle(array) {
@@ -128,9 +134,16 @@ function updateClock(time) {
         time.sec = 0;
         time.min++
     }
-    seconds = time.sec < 10 ? seconds = `0${time.sec}` : time.sec
-    console.log(`${time.min} : ${seconds}`)
 
+    updateUI(data.time);
+
+}
+
+function updateUI(time) {
+    seconds = time.sec < 10 ? seconds = `0${time.sec}` : time.sec
+    timerText.innerHTML = `${time.min} : ${seconds}`;
+    txtPlayer1.innerHTML = `<p>${data.players[0].name} : ${data.players[0].score}</p>`;
+    txtPlayer2.innerHTML = `<p>${data.players[1].name} : ${data.players[1].score}</p>`;
 }
 
 init();
