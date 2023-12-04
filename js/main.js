@@ -56,9 +56,9 @@ if (!data.players[1].name) { data.players[1].name = prompt("Naam van speler 2") 
         newCard.setAttribute("data-card", image.name);
         newImage.src = `images/${image.name}.jpg`;
         cover.className = 'cover';
-        newCard.appendChild(newImage);
-        newCard.appendChild(cover);
-        gameField.appendChild(newCard);
+        newCard.append(newImage);
+        newCard.append(cover);
+        gameField.append(newCard);
     })
     timer = setInterval(() => {
         console.log("tick");
@@ -109,7 +109,7 @@ function checkMatch() {
 function updateChat(text) {
     //let chatText = document.createElement("p");
    // chatText.innerHTML = text;
-    // chatBox.appendChild(chatText);
+    // chatBox.append(chatText);
     chatBox.innerHTML = `<p>${text}</p>`;
 }
 
