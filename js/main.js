@@ -46,9 +46,9 @@ function init() {
         newCard.setAttribute("data-card", image.name);
         newImage.src = `images/${image.name}.jpg`;
         cover.className = 'cover';
-        newCard.appendChild(newImage);
-        newCard.appendChild(cover);
-        gameField.appendChild(newCard);
+        newCard.append(newImage);
+        newCard.append(cover);
+        gameField.append(newCard);
 
 
 
