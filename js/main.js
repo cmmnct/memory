@@ -35,6 +35,22 @@ const textPlayer2 = document.getElementById("player-2");
 const gameChat = document.getElementById("chat");
 let currentPlayer = Math.random() < 0.5 ? data.players[0] : data.players[1]  // ternairy operator
 
+function onChooseSize(event) {
+    event.target.blur();
+    console.log(event.target.value);
+    let size = Math.floor(Math.pow(event.target.value, 2) / 2);
+    gameField.className = `field${size}`;
+    console.log(size);
+    fetch("js/memoryData.json")
+    .then(data => data.json())
+    .then(images => {
+        data.images = shuffle(images).slice(0, size);
+    })
+    .then(() => init());
+}
+
+
+
 function init() {
     let cardSet = shuffle(data.images.concat(data.images));
     gameField.innerHTML = "";
@@ -51,6 +67,7 @@ function init() {
     })
     data.time.sec = 0;
     data.time.min = 0;
+    clearInterval(data.timer);
     data.timer = setInterval(updateTime, 1000);
     if (data.players[0].name === "") {
         data.players[0].name = prompt("Naam speler 1", "speler 1");
@@ -64,6 +81,7 @@ function init() {
 function onTurnCard(event) {
     if (event.target.className === "cover" && !data.card2) {
         console.log("card clicked");
+        playSound(event.target.parentElement.dataset.card);
         event.target.className = "";
         if (!data.card1) {
             data.card1 = event.target.parentElement;
@@ -100,7 +118,6 @@ function checkMatch() {
 }
 
 function reset() {
-    clearInterval(data.timer);
     if (confirm("Nog een spel?")) {
         init();
     }
@@ -140,4 +157,8 @@ function updateTime() {
 
 }
 
-init()
+function playSound(name) {
+    let audio = new Audio(`snd/${name}.wav`);
+    audio.play();
+}
+

@@ -1,23 +1,68 @@
-[ {"name":"dog"},
-    {"name":"cat"}, 
-    {"name":"rooster"}, 
-    {"name":"goose"}, 
-    {"name":"chick"}, 
-    {"name":"cow"}, 
-    {"name":"kitten"}, 
-    {"name":"lamb"}, 
-    {"name":"mouse"}, 
-    {"name":"piglet"}, 
-    {"name":"puppy"}, 
-    {"name":"duck"}, 
-    {"name":"horse"}, 
-    {"name":"goat"}, 
-    {"name":"sheep"}, 
-    {"name":"hen"}, 
-    {"name":"pig"}, 
-    {"name":"fox"}, 
-    {"name":"hedgehog"}, 
-    {"name":"peacock"}, 
-    {"name":"donkey"}, 
-    {"name":"pigeon"}
+[
+    {
+        "name": "dog"
+    },
+    {
+        "name": "cat"
+    },
+    {
+        "name": "rooster"
+    },
+    {
+        "name": "goose"
+    },
+    {
+        "name": "chick"
+    },
+    {
+        "name": "cow"
+    },
+    {
+        "name": "kitten"
+    },
+    {
+        "name": "lamb"
+    },
+    {
+        "name": "mouse"
+    },
+    {
+        "name": "piglet"
+    },
+    {
+        "name": "puppy"
+    },
+    {
+        "name": "duck"
+    },
+    {
+        "name": "horse"
+    },
+    {
+        "name": "goat"
+    },
+    {
+        "name": "sheep"
+    },
+    {
+        "name": "hen"
+    },
+    {
+        "name": "pig"
+    },
+    {
+        "name": "fox"
+    },
+    {
+        "name": "hedgehog"
+    },
+    {
+        "name": "peacock"
+    },
+    {
+        "name": "donkey"
+    },
+    {
+        "name": "pigeon"
+    }
 ]

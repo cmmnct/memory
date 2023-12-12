@@ -11,6 +11,15 @@
   <body>
     <main>
       <h1>Memory Game</h1>
+      <div id="select" onchange="onChooseSize(event)">
+        <select>
+          <option value="" disabled selected>kies een speelveld...</option>
+          <option value="4">4 x 4</option>
+          <option value="5">5 x 5</option>
+          <option value="6">6 x 6</option>
+        </select>
+
+      </div>
       <div id="game-field" onclick="onTurnCard(event)"></div>
       <div id="game-dialog">
         <div id="player-1"></div>
