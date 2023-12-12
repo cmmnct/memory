@@ -23,7 +23,7 @@ main {
 
 #game-field > div{
     position: relative;
-    width: calc(33% - 20px);
+    width: calc(25% - 20px);
     aspect-ratio: 1/1;
     margin: 10px;
     padding: 10px;
@@ -52,4 +52,35 @@ main {
 #game-field  div img{
     max-width: 100%;
 
+}
+
+#game-dialog{
+    display: flex;
+}
+
+#game-dialog div {
+    width: 33.333%;
+    padding: 10px;
+}
+
+#game-dialog div p {
+    background-color: blueviolet;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+#game-timer.timer p {
+    background-color: chocolate;
+}
+
+#chat {
+    background-color: chocolate;
+    padding: 1px;
+    padding-left: 30px;
+    border-radius: 5px;
+
+}
+#chat p {
+    font-size: 32px;
 }
