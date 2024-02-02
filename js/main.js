@@ -6,7 +6,6 @@ const data = {
     { name: "hen" },
     { name: "dog" },
     { name: "duck" },
-    { name: "koe" },
     { name: "pig" },
     { name: "cat" },
     ],
