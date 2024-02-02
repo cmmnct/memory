@@ -36,11 +36,9 @@ function init() {
         newCard.append(newImage);
         newCard.append(cover);
         gameField.append(newCard);
-
-        
     })
-
 }
+
 function onTurnCard() {
 
 }
