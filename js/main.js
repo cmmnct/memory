@@ -25,7 +25,8 @@ const data = {
     time: {
         min: 0,
         sec: 0
-    }
+    },
+    audio: false
 }
 
 const gameField = document.getElementById("game-field");
@@ -34,6 +35,17 @@ const textPlayer1 = document.getElementById("player-1");
 const textPlayer2 = document.getElementById("player-2");
 const gameChat = document.getElementById("chat");
 let currentPlayer = Math.random() < 0.5 ? data.players[0] : data.players[1]  // ternairy operator
+
+function onChooseField(event) {
+    console.log(event.target.value);
+    event.target.blur();
+    let subSetNumber = Math.floor(Math.pow(event.target.value, 2) / 2);
+    gameField.className = `field${event.target.value}`;
+    fetch("js/memoryData.json")
+        .then(data => data.json())
+        .then(imagesJSON => data.images = shuffle(imagesJSON).slice(0, subSetNumber))
+        .then(() => init());
+}
 
 function init() {
     let cardSet = shuffle(data.images.concat(data.images));
@@ -47,10 +59,10 @@ function init() {
         cover.className = "cover";
         newCard.append(newImage, cover);
         gameField.append(newCard);
-
     })
     data.time.sec = 0;
     data.time.min = 0;
+    clearInterval(data.timer);
     data.timer = setInterval(updateTime, 1000);
     if (data.players[0].name === "") {
         data.players[0].name = prompt("Naam speler 1", "speler 1");
@@ -64,6 +76,7 @@ function init() {
 function onTurnCard(event) {
     if (event.target.className === "cover" && !data.card2) {
         console.log("card clicked");
+       if(data.audio) playSound(event.target.parentElement.dataset.card);
         event.target.className = "";
         if (!data.card1) {
             data.card1 = event.target.parentElement;
@@ -73,7 +86,6 @@ function onTurnCard(event) {
             console.log(data.card2);
             setTimeout(() => checkMatch(), 1000);
         }
-
     }
 }
 
@@ -140,4 +152,12 @@ function updateTime() {
 
 }
 
-init()
+function playSound(name) {
+    let sound = new Audio(`snd/${name}.wav`);
+    sound.play();
+}
+
+function toggleAudio(event) {
+    data.audio = !data.audio;
+    data.audio ? event.target.className = "btn-audio aan" : event.target.className = "btn-audio uit";
+}

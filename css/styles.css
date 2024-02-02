@@ -6,10 +6,9 @@
 }
 body { 
     background-color: cadetblue;
-    margin-top: 120px;
 }
 main {
-    max-width: 900px;
+    max-width: 600px;
     margin: auto;
 }
 
@@ -18,19 +17,40 @@ main {
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    margin: 10px;
+    margin: 5px;
+}
+
+.field-select{
+    font-size: 18px;
+    width: calc(100% - 10px);
+    padding:10px;
+    margin: 5px;
+    border: none;
+    background-color: burlywood;
+    text-align: center;
+    border-radius: 5px;
+
 }
 
 #game-field > div{
     position: relative;
-    width: calc(25% - 20px);
     aspect-ratio: 1/1;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     background-color: rgb(57, 97, 98);
     box-shadow: 3px 3px 2px  rgba(0,0,0,0.2);
     text-align: center;
     border-radius: 10px;
+}
+
+.field4 > div {
+    width: calc(25% - 10px);
+}
+.field5 > div {
+    width: calc(20% - 10px);
+}
+.field6 > div {
+    width: calc(16.666% - 10px);
 }
 
 .cover {
@@ -66,9 +86,9 @@ main {
 #game-dialog div p {
     background-color: blueviolet;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
-    font-size: 24px;
+    font-size: 16px;
 }
 #game-timer.timer p {
     background-color: chocolate;
@@ -82,5 +102,26 @@ main {
 
 }
 #chat p {
-    font-size: 32px;
+    font-size: 16px;
+}
+
+.btn-audio{
+    border-radius: 50%;
+    width: 48px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    background-color: darkslategrey;
+    border: none;
+    aspect-ratio: 1/1;
+    padding: 5px;
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    left:10vw
+}
+
+.aan {
+    background-color: chocolate;
+}
+.uit{
+    background-color: darkslategray;
 }
